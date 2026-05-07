@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(open http://localhost:3000)",
+      "Bash(curl -s -X POST http://localhost:8000/api/auth/login -H 'Content-Type: application/json' -d '{\"username\":\"admin\",\"password\":\"admin123\"}')",
+      "Bash(curl -s http://localhost:3000)",
+      "Bash(curl -s http://localhost:8000/health)",
+      "Bash(python3 -m json.tool)",
+      "Bash(curl -s -X POST http://localhost:8000/api/auth/register -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTc3ODE1NjE1Nn0.0HLmX1jZWMkIvBZPtGYmapbyeFNNyMx-6t_mDvda1B0' -H 'Content-Type: application/json' -d '{\"username\":\"test_user\",\"password\":\"123456\",\"role\":\"user\",\"department\":\"地面科\"}')",
+      "Bash(curl -s -X PUT http://localhost:8000/api/auth/users/2 -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTc3ODE1NjE1Nn0.0HLmX1jZWMkIvBZPtGYmapbyeFNNyMx-6t_mDvda1B0' -H 'Content-Type: application/json' -d '{\"role\":\"user\",\"department\":\"指挥科\"}')",
+      "Bash(curl -s -X DELETE http://localhost:8000/api/auth/users/2 -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTc3ODE1NjE1Nn0.0HLmX1jZWMkIvBZPtGYmapbyeFNNyMx-6t_mDvda1B0')",
+      "Bash(curl -s -X GET http://localhost:8000/api/auth/users -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTc3ODE1NjE1Nn0.0HLmX1jZWMkIvBZPtGYmapbyeFNNyMx-6t_mDvda1B0')",
+      "Bash(curl -s -X GET 'http://localhost:8000/api/contracts/?department=地面科' -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTc3ODE1NjE1Nn0.0HLmX1jZWMkIvBZPtGYmapbyeFNNyMx-6t_mDvda1B0')",
+      "Bash(npm --version)",
+      "Bash(git add *)"
+    ]
+  }
+}
