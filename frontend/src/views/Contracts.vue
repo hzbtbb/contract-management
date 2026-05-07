@@ -77,11 +77,21 @@
         <el-form-item label="合同金额">
           <el-input-number v-model="editForm.amount" :min="0" :precision="2" style="width: 100%;" />
         </el-form-item>
-        <el-form-item label="履行时间">
+        <el-form-item label="履行开始">
           <el-date-picker
-            v-model="editForm.execution_date"
+            v-model="editForm.execution_start_date"
             type="date"
-            placeholder="请选择合同履行时间"
+            placeholder="请选择开始时间"
+            style="width: 100%;"
+            format="YYYY-MM-DD"
+            value-format="YYYY-MM-DD"
+          />
+        </el-form-item>
+        <el-form-item label="履行结束">
+          <el-date-picker
+            v-model="editForm.execution_end_date"
+            type="date"
+            placeholder="请选择结束时间"
             style="width: 100%;"
             format="YYYY-MM-DD"
             value-format="YYYY-MM-DD"
@@ -131,8 +141,10 @@ const formatDate = (row) => {
 }
 
 const formatExecutionDate = (row) => {
-  if (!row.execution_date) return '未设置'
-  return new Date(row.execution_date).toLocaleDateString('zh-CN')
+  if (!row.execution_start_date || !row.execution_end_date) return '未设置'
+  const start = new Date(row.execution_start_date).toLocaleDateString('zh-CN')
+  const end = new Date(row.execution_end_date).toLocaleDateString('zh-CN')
+  return `${start} 至 ${end}`
 }
 
 const loadContracts = async () => {
@@ -162,7 +174,8 @@ const editContract = (row) => {
     name: row.name,
     amount: row.amount,
     description: row.description || '',
-    execution_date: row.execution_date ? new Date(row.execution_date).toISOString().split('T')[0] : ''
+    execution_start_date: row.execution_start_date ? new Date(row.execution_start_date).toISOString().split('T')[0] : '',
+    execution_end_date: row.execution_end_date ? new Date(row.execution_end_date).toISOString().split('T')[0] : ''
   }
   editDialogVisible.value = true
 }
